@@ -4,3 +4,4 @@ My first year of contact with programming. All applications were developed in 20
 Observations: 
 - All application were assignments which counted towards the overall grade of technical high school.
 - TP means Trabalho Prático, which translated from portuguese means Practical Assignments
+- I did not change any files, all applications have their original model from when I made and present in high school
