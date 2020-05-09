@@ -1,0 +1,76 @@
+<meta charset="utf-8"></meta>
+<html>
+	<head>
+		<script language="Javascript">
+			function testar()
+			{
+			var tx, rb, cb, ch1, ch2, ch3;
+			tx=document.getElementById("txt1").value;
+			if(tx == ""){alert("Insira seu nome!"); tx = "Corinthians 2016";}
+			rb=document.getElementById("rad1").checked;
+			cb=document.getElementById("sel1").value;
+			ch1=document.getElementById("chk1").checked;
+			ch2=document.getElementById("chk2").checked;
+			ch3=document.getElementById("chk3").checked;
+			document.getElementById("saida1").innerHTML=tx;
+			document.getElementById("saida2").innerHTML=(rb?"Masculino":"Feminino");
+			document.getElementById("saida3").innerHTML=cb;
+			document.getElementById("saida4").innerHTML=(ch1?"Ônibus":"Outros");
+			document.getElementById("saida5").innerHTML=(ch2?"Periodo Matutino":"Periodo Vespertino");
+			document.getElementById("saida5").innerHTML=(ch3?"Periodo Vespertino":"Periodo Matutino");
+			}
+		</script>
+	</head>
+	<body bgcolor="lightgreen">
+	<center>
+	<table border="5">
+	<tr colspan="15" rowspan="4">
+	<td bgcolor="lightblue">
+		<font face="Arial" size="4">
+			<form>Digite o seu nome:
+				<br>
+				<input type="text" size="15" maxlength="15" id="txt1" wrap></input>
+				<br>
+				<br>Sexo:
+				<br>MASCULINO
+				<input type="radio" name="radio1" id="rad1"></input>
+				<br>
+				<br>FEMININO
+				<input type="radio" name="radio1" id="rad2"></input>
+				<br>
+				
+				<br>Profissões:<br>
+				<select id="sel1">
+					<option value="Tecnico em Informática">Técnico em Informática</option>
+					<option value="Automação">Automação</option>
+					<option value="Química">Química</option>
+					<option value="Logística">Logística</option>
+					<option value="Física">Física</option>
+					<option value="Outros">Outros...</option>
+				</select>
+				<br>
+				<br>Ônibus:
+				<input type="checkbox" id="chk1"></input>
+				<br>
+				<br>Periodo Matutino:
+				<input type="checkbox" id="chk2"></input>
+				<br>
+				<br>Periodo Vespertino:
+				<input type="checkbox" id="chk3"></input>
+				<br>
+				<input type="button" value="Testar" onclick="testar();"></input>
+				<input type="reset" value="Limpar"></input></td>
+				</tr></table>
+				</form>
+				<table border="1"> <tr bgcolor="#00FA9A"><td>
+                <center>\\Em andamento//<br></center>
+					
+			<center><p id="saida1">\\Nome//</p>
+			<p id="saida2">\\Sexo//</p>
+			<p id="saida3">\\Escolaridade//</p>
+			<p id="saida4">\\Meio de Trasporte//</p>
+			<p id="saida5">\\Período de aula//</p>
+		</font></tr></td></center>
+	</body>
+
+</html>

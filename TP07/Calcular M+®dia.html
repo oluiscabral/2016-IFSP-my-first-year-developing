@@ -1,0 +1,87 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+</meta>
+<title>
+Média Escolar
+</title>
+<script type="text/javascript">
+
+function Media()
+{
+var n1,n2,n3,n4,res,apv;
+
+n1 = document.getElementById("number1").value;
+n2 = document.getElementById("number2").value;
+n3 = document.getElementById("number3").value;
+n4 = document.getElementById("number4").value;
+
+if(isNaN(n1)){alert("Insira somente números(nota 1 foi redefinida para 0)."); n1 = 0;}
+if(isNaN(n2)){alert("Insira somente números(nota 2 foi redefinida para 0)."); n2 = 0;}
+if(isNaN(n3)){alert("Insira somente números(nota 3 foi redefinida para 0)."); n3 = 0;}
+if(isNaN(n4)){alert("Insira somente números(nota 4 foi redefinida para 0)."); n4 = 0;}
+
+if(n1 == ""){n1 = 0}
+if(n2 == ""){n2 = 0}
+if(n3 == ""){n3 = 0}
+if(n4 == ""){n4 = 0}
+
+n1 = eval(n1);
+n2 = eval(n2);
+n3 = eval(n3);
+n4 = eval(n4);
+
+if(n1 > 10){alert("Insira uma nota menor ou igual a 10"); n1 = 0;}
+if(n2 > 10){alert("Insira uma nota menor ou igual a 10"); n2 = 0;}
+if(n3 > 10){alert("Insira uma nota menor ou igual a 10"); n3 = 0;}
+if(n4 > 10){alert("Insira uma nota menor ou igual a 10"); n4 = 0;}
+
+res = (n1 + n2 + n3 + n4)/4;
+
+if(res >= 6)
+{
+document.getElementById("yyy").innerHTML="APROVADO";
+}
+else
+{
+if(res < 4)
+{
+document.getElementById("yyy").innerHTML="REPROVADO";
+}
+else
+{
+document.getElementById("yyy").innerHTML="RECUPERAÇÃO";
+}
+}
+document.getElementById("zzz").innerHTML=res;
+}
+</script>
+
+</head>
+<body bgcolor="gray"><font color="Black">
+<center>
+<h1> Desenvolvimento de Sites: </h1>
+<h3> Site de Estudo e Testes </h3>
+<hr><br><br></font>
+
+<table border="2"><tr><th colspan="2"><font size="5" color="Black" face="Arial">Média Escolar</font></th></tr>
+<tr><td align="left"><font color="Black" face="Arial">
+NT1:<input size="1" maxlength="2" type="text" id="number1">
+<br>
+NT2:<input size="1" maxlength="2" type="text" id="number2">
+<br>
+NT3:<input size="1" maxlength="2" type="text" id="number3">
+<br>
+NT4:<input size="1" maxlength="2" type="text" id="number4">
+</td><td align="center"><input type="submit" value="Calcular" onclick="Media()">
+</td>
+</tr>
+<tr>
+<th colspan="2" id="zzz"><br></th></tr>
+<tr><th colspan="2" id="yyy"><br></th></tr>
+</center></body>
+</html>
+
+
+
+

@@ -1,0 +1,429 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title>LUIS CABRAL</title>
+<link rel="shortcut icon" href="LC.ico"/>
+
+<style>
+
+html, body
+{
+margin: 0;
+width:100%;
+height:100%;
+background-color:black;
+}
+
+div.principal
+{
+position:relative;
+display:block;
+top:10px;
+margin:auto;
+width:1000px;
+min-width:800px;
+height:550px;
+background-color:lightblue;
+}
+
+div.esq
+{
+position:relative;
+display:block;
+float:left;
+width:50%;
+height:100%;
+background-color:#2A2A2A;
+}
+
+div.esq select
+{
+width:500px;
+height:350px;
+border:none;
+outline:none;
+text-align:center;
+font-size:14px;
+background-color:#4A4A4A;
+margin:50px 0 0 0;
+color:white;
+}
+
+div.dir
+{
+position:relative;
+display:block;
+float:right;
+width:50%;
+height:100%;
+background-color:blue;
+}
+
+div.header
+{
+position:relative;
+display:block;
+width:100%;
+height:50px;
+background-color:#2A2A2A;
+line-height:200%;
+text-align:center;
+font-family:aharoni;
+font-size:25px;
+color:white;
+}
+
+div.cadinpa
+{
+width:60%;
+height:100px;
+background-color:#4A4A4A;
+float:left;
+display:inline-block;
+line-height:490%;
+text-align:center;
+font-size:20px;
+font-family:Courier New;
+color:white;
+font-weight:bold;
+}
+
+div.cadinpb
+{
+width:40%;
+height:100px;
+background-color:#4A4A4A;
+float:left;
+display:inline-block;
+text-align:center;
+font-size:20px;
+font-family:Courier New;
+color:white;
+font-weight:bold;
+}
+
+div.cadinpb input
+{
+width:80%;
+height:25%;
+font-size:20px;
+margin:0;
+text-align:center;
+position: relative;
+top:35%;
+transform: translate(0, -50%);
+}
+
+a.cadinpr
+{
+position:relative;
+width:50%;
+height:25px;
+background-color:#4A4A4A;
+display:inline-block;
+text-align:center;
+font-family:Courier New;
+color:white;
+font-weight:bold;
+}
+
+a.cadbt
+{
+width:100%;
+height:50px;
+background-color:#2A2A2A;
+text-align:center;
+line-height:300%;
+display:inline-block;
+position: relative;
+color:white;
+text-decoration:none;
+font-family:aharoni;
+}
+
+a.cadbt:hover
+{
+background-color:white;
+
+color:black;
+}
+
+a.cadbt:active
+{
+background-color:#101010;
+color:white;
+}
+
+a.cont
+{
+position:relative;
+display:block;
+width:100%;
+height:50px;
+background-color:#2a2a2a;
+line-height:250%;
+text-align:center;
+font-size:20px;
+font-family:Courier New;
+color:white;
+font-weight:bold;
+}
+
+div.cadinpar
+{
+width:60%;
+height:50px;
+background-color:#4A4A4A;
+float:left;
+display:inline-block;
+line-height:245%;
+text-align:center;
+font-size:20px;
+font-family:Courier New;
+color:white;
+font-weight:bold;
+}
+
+div.cadinpbr
+{
+width:40%;
+height:50px;
+background-color:#4A4A4A;
+float:left;
+display:inline-block;
+text-align:center;
+line-height:250%;
+font-size:18px;
+font-family:Courier New;
+color:white;
+font-weight:bold;
+}
+
+a.btcont
+{
+line-height:150%;
+position:relative;
+margin-right:auto;
+text-align:center;
+width:100%;
+display:inline-block;
+color:white;
+font-family:Arial;
+font-weight:bold;
+background-color:#2A2A2A;
+text-decoration:none;
+line-height:545%;
+height:100px;
+}
+
+a.btcont:hover
+{
+background-color:white;
+
+color:black;
+
+}
+
+a.btcont:active
+{
+background-color:#101010;
+color:white;
+}
+</style>
+
+<body>
+
+<div class="principal">
+
+<div class="esq">
+
+<div class="header">LISTAGEM</div>
+
+<select id="listbox" multiple="multiple">
+</select>
+
+
+</div>
+
+
+<div class="dir">
+
+<div class="header">CADASTRO</div>
+
+<a id="scont" class="cont"></a>
+
+<form id="cad">
+<div class="cadinpa">NOME:</div>
+<div class="cadinpb"><input id="ent1" type="text"/></div>
+
+<div class="cadinpa">NÚMERO:</div>
+<div class="cadinpb"><input id="ent2" type="text"/></div>
+
+<div class="cadinpa">TURMA:</div>
+<div class="cadinpb"><input id="ent3" type="text"/></div>
+
+<div class="cadinpar">PERÍODO:</div>
+<div class="cadinpbr"><input id="entr1" value="MANHA" type="radio"/>MANHÃ - TARDE<input id="entr2" value="TARDE" type="radio"/></div>
+
+</form>
+
+<a href="javascript:cadastro()" class="cadbt">ARMAZENAR</a>
+<a href="javascript:nservidor()" class="cadbt">ENVIAR</a>
+
+</div>
+
+
+</div>
+
+
+<script>
+var nome = [];
+var numero = [];
+var turma = [];
+var periodo = [];
+
+var i = 0, j = 0, k = 0;
+
+var list = document.getElementById("listbox");
+
+listar();
+
+function cadastro()
+{
+i;
+
+nome[i] = document.getElementById("ent1").value;
+numero[i] = eval(document.getElementById("ent2").value);
+turma[i] = document.getElementById("ent3").value;
+
+if(document.getElementById("entr1").checked)
+{
+periodo[i] = document.getElementById("entr1").value;
+}
+else
+{
+periodo[i] = document.getElementById("entr2").value;
+}
+
+document.getElementById("cad").reset();
+
+i++;
+
+}
+
+function nservidor()
+{
+
+
+list, nome, numero, turma, periodo, i;
+
+j = 0;
+
+if(i != 0)
+{
+var connection = new ActiveXObject("ADODB.Connection");
+
+var connectionstring=
+
+     "DRIVER={MySql ODBC 5.1 Driver};" + 
+     "SERVER=db4free.net;" + 
+     "Port=3307;" +
+     "DATABASE=bdlc;" + 
+     "USER=cabral;" + 
+     "PASSWORD=123456;"
+
+connection.Open(connectionstring);
+
+var rs = new ActiveXObject("ADODB.Recordset");
+
+rs.Open("SELECT * FROM TP", connection, 1, 3);
+
+while(j < i)
+{
+
+rs.addnew;
+rs.Fields("NOME").value = nome[j];
+rs.Fields("NUMERO").value = numero[j];
+rs.Fields("TURMA").value = turma[j];
+rs.Fields("HORARIO").value = periodo[j];
+
+
+j++;
+}
+rs.Update;
+
+rs.close;
+connection.close;
+
+nome.splice(0, (i-1));
+numero.splice(0, (i-1));
+turma.splice(0, (i-1));
+periodo.splice(0, (i-1));
+
+i = 0;
+
+listar();
+}
+
+
+}
+
+function listar()
+{
+k, j, list;
+
+var length = list.options.length;
+
+for(j=0; j <= length; j++)
+{
+list.remove(0);
+}
+
+var connection = new ActiveXObject("ADODB.Connection");
+
+var connectionstring=
+
+     "DRIVER={MySql ODBC 5.1 Driver};" + 
+     "SERVER=db4free.net;" + 
+     "Port=3307;" +
+     "DATABASE=bdlc;" + 
+     "USER=cabral;" + 
+     "PASSWORD=123456;"
+
+connection.Open(connectionstring);
+
+
+
+var rs = new ActiveXObject("ADODB.Recordset");
+
+rs.Open("SELECT * FROM TP", connection);
+
+rs.MoveFirst;
+
+while(!rs.eof)
+{
+   
+   var x = document.createElement("option");
+   x.text = "NOME:"+ rs.fields(0) +" Nº:"+ rs.fields(1) +" TURMA:" + rs.fields(2) +" HORARIO:"+ rs.fields(3);
+   list.add(x);
+
+   rs.movenext;
+}
+
+
+
+rs.close;
+connection.close;
+
+
+}
+
+</script>
+
+</body>
+
+</html>
+

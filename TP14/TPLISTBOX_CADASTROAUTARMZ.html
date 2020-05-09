@@ -1,0 +1,674 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+
+<title>LUIS CABRAL</title>
+
+
+<link rel="shortcut icon" href="LC.ico"/>
+
+
+
+
+<style>
+
+html, body
+{
+margin: 0;
+width:100%;
+height:100%;
+background-color:black;
+}
+
+div.principal
+{
+position:relative;
+top:10%;
+margin:auto;
+width:1000px;
+min-width:800px;
+height:500px;
+min-height:500px;
+}
+
+div.cad
+{
+float:right;
+width:50%;
+height:100%;
+}
+
+div.headercad
+{
+width:100%;
+height:50px;
+background-color:#2A2A2A;
+text-align:center;
+}
+
+a.header
+{
+font-family:aharoni;
+font-size:25px;
+color:white;
+margin: 0;
+position: relative;
+top: 30%;
+}
+
+div.cadinpa
+{
+width:60%;
+height:100px;
+background-color:#4A4A4A;
+float:left;
+display:inline-block;
+text-align:center;
+}
+
+div.cadinpa a
+{
+margin: 0;
+position: relative;
+top: 40%;
+font-size:20px;
+font-family:Courier New;
+color:white;
+font-weight:bold;
+}
+
+div.cadinpb
+{
+width:40%;
+height:100px;
+background-color:#4A4A4A;
+float:left;
+display:inline-block;
+position: relative;
+}
+
+div.cadinpb input
+{
+width:80%;
+height:30%;
+font-size:20px;
+margin: 0;
+text-align:center;
+position: relative;
+top: 50%;
+transform: translate(0, -50%);
+}
+
+a.cadbt
+{
+width:100%;
+height:50px;
+background-color:#2A2A2A;
+text-align:center;
+line-height:300%;
+display:inline-block;
+margin: 0;
+position: relative;
+color:white;
+text-decoration:none;
+font-family:aharoni;
+}
+
+a.cadbt:hover
+{
+background-color:white;
+
+color:black;
+}
+
+a.cadbt:active
+{
+background-color:#2A2A2A;
+color:#101010;
+}
+
+div.apr
+{
+position:relative;
+float:left;
+width:50%;
+height:100%;
+}
+
+div.headerapr
+{
+position:relative;
+width:100%;
+height:50px;
+background-color:#2A2A2A;
+text-align:center;
+}
+
+select.listbox
+{
+position:relative;
+margin:20px 25% 0px 25%;
+height:130px;
+width:50%;
+float:center;
+background-color:#2A2A2A;
+color:white;
+border:none;
+outlne:none;
+text-align:center;
+}
+
+select.listbox:focus
+{
+outline:none;
+}
+
+div.apra
+{
+position:relative;
+width:100%;
+height:50%;
+background-color:#8A8A8A;
+text-align:center;
+}
+
+a.btcont
+{
+line-height:150%;
+position:relative;
+margin-right:auto;
+text-align:center;
+width:25%;
+display:inline-block;
+color:white;
+font-family:Arial;
+font-weight:bold;
+background-color:#2A2A2A;
+text-decoration:none;
+height:25px;
+}
+
+a.btcont:hover
+{
+background-color:white;
+
+color:black;
+
+}
+
+a.btcont:active
+{
+background-color:#101010;
+color:white;
+}
+
+div.aprb
+{
+position:relative;
+width:100%;
+height:40%;
+background-color:#101010;
+color:white;
+}
+
+div.aprb p
+{
+margin:0px 0px 0px 10px;
+}
+
+div.aprt
+{
+float:left;
+margin: 10px 0px 0px 0px;
+width:50%;
+height:40px;
+display:block;
+background-color:#2a2a2a;
+color:white;
+text-align:center;
+}
+
+div.footer
+{
+position:relative;
+display:block;
+clear:both;
+width:1000px;
+min-width:800px;
+height:20px;
+background-color:#484CB7;
+text-align:left;
+}
+
+div.footer a
+{
+margin-left:10px;
+font-family:Courier New;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="principal">
+<div class="apr">
+<div class="headerapr"><a class="header">LISTAGEM</a></div>
+<div class="apra">
+<select onclick="apresentar()" class="listbox" id="lista" size="10" multiple="multiple"></select>
+<a onclick="cima()" href="#" class="btcont">ACIMA</a><a onclick="baixo()" href="#" class="btcont">ABAIXO</a><br>
+<a onclick="deletar()" href="#" class="btcont">DELETAR</a><br>
+<div class="aprt"><a id="aprtc"></a></div><div class="aprt"><a id="aprtg"></a></div>
+</div>
+
+<div class="aprb">
+<p id="sapr1"></p><br>
+<p id="sapr2"></p><br>
+<p id="sapr3"></p><br>
+<p id="sapr4"></p><br>
+<p id="sapr5"></p><br>
+<p id="sapr6"></p>
+</div>
+</div>
+
+
+<div class="cad">
+<div class="headercad"><a class="header">CADASTRO</a></div>
+<form id="cadform">
+<div class="cadinpa"><a>APARELHO</a></div><div class="cadinpb"><input onfocusin="enta()" onkeyup="teclado()" id="ent1" type="text"/></div><div class="cadinpa"><a>CONSUMO (W)</a></div><div class="cadinpb"><input onfocusin="entb()" onkeyup="teclado()" id="ent2" type="text"/></div>
+<div class="cadinpa"><a>USO (HR/D)</a></div><div class="cadinpb"><input onfocusin="entc()" onkeyup="teclado()" id="ent3" type="text"/></div>
+</form>
+<div class="cadinpa"><a>VALOR DE FORNECIMENTO</a></div><div class="cadinpb"><input onkeyup="teclado()" onfocusin="entd()" id="entrf" type="text"/></div>
+<a class="cadbt" href="#" onclick="cadastro()">ARMAZENAR</a>
+</div>
+
+
+<script>
+var aparelho = [];
+var c = [];
+var hrsd = [];
+var vlrf = [];
+var cm = [];
+var gm = [];
+
+var ct = eval(0);
+var gt = eval(0);
+
+var i=eval(0);
+
+var list = document.getElementById("lista");
+
+var p = eval(0);
+
+document.getElementById("entrf").focus();
+
+if("aparelho" in localStorage)
+{
+aparelho = JSON.parse(localStorage.aparelho);
+c = JSON.parse(localStorage.c);
+hrsd = JSON.parse(localStorage.hrsd);
+vlrf = JSON.parse(localStorage.vlrf);
+cm = JSON.parse(localStorage.cm);
+gm = JSON.parse(localStorage.gm);
+ct = eval(localStorage.ct);
+gt = eval(localStorage.gt);
+i = aparelho.length;
+
+document.getElementById("aprtc").innerHTML = "CONSUMO TOTAL<br>"+ ct +" KW";
+document.getElementById("aprtg").innerHTML = "GASTO TOTAL<br> R$ "+ gt;
+}
+
+for(var j=0; j < i; j++)
+{
+var x = document.createElement("option");
+
+x.text = aparelho[j];
+
+list.add(x);
+}
+
+
+function cadastro()
+{
+i, list, ct, gt;
+
+var x = document.createElement("option");
+
+aparelho[i] = document.getElementById("ent1").value;
+c[i] = eval(document.getElementById("ent2").value);
+hrsd[i] = eval(document.getElementById("ent3").value);
+vlrf[i] = eval(document.getElementById("entrf").value);
+
+cm[i] = (c[i] * hrsd[i] * 30) / 1000;
+gm[i] = cm[i] * vlrf[i];
+
+
+x.text = aparelho[i];
+
+list.add(x);
+
+document.getElementById("cadform").reset();
+
+ct += cm[i];
+gt += gm[i];
+Math.ceil(ct);
+Math.ceil(gt);
+
+localStorage.setItem("aparelho", JSON.stringify(aparelho));
+localStorage.setItem("c", JSON.stringify(c));
+localStorage.setItem("hrsd", JSON.stringify(hrsd));
+localStorage.setItem("vlrf", JSON.stringify(vlrf));
+localStorage.setItem("cm", JSON.stringify(cm));
+localStorage.setItem("gm", JSON.stringify(gm));
+localStorage.setItem("ct", ct);
+localStorage.setItem("gt", gt);
+
+
+
+document.getElementById("aprtc").innerHTML = "CONSUMO TOTAL<br>"+ ct +" KW";
+document.getElementById("aprtg").innerHTML = "GASTO TOTAL<br> R$ "+ gt;
+
+
+
+i++;
+}
+
+function cima()
+{
+var w = document.getElementById("lista").selectedIndex;
+
+var auxtexto, auxaparelho, auxc, auxhrsd, auxvlrf, auxcm, auxgm;
+
+list, aparelho, c, hrsd, vlrf, cm, gm;
+
+
+if(list[w].index == 0 || list[w].index == -1)
+{
+return false;
+}
+else
+{
+auxtexto = list[w].text;
+auxaparelho = aparelho[w];
+auxc = c[w];
+auxhrsd = hrsd[w];
+auxvlrf = vlrf[w];
+auxcm = cm[w];
+auxgm = gm[w];
+
+list[w].text = list[w-1].text;
+aparelho[w] = aparelho[w-1];
+c[w] = c[w-1];
+hrsd[w] = hrsd[w-1];
+vlrf[w] = vlrf[w-1];
+cm[w] = cm[w-1];
+gm[w] = gm[w-1];
+
+list[w-1].text = auxtexto;
+aparelho[w-1] = auxaparelho;
+c[w-1] = auxc;
+hrsd[w-1] = auxhrsd;
+vlrf[w-1] = auxvlrf;
+cm[w-1] = auxcm;
+gm[w-1] = auxgm;
+
+list.selectedIndex = w-1;
+
+}
+
+localStorage.setItem("aparelho", JSON.stringify(aparelho));
+localStorage.setItem("c", JSON.stringify(c));
+localStorage.setItem("hrsd", JSON.stringify(hrsd));
+localStorage.setItem("vlrf", JSON.stringify(vlrf));
+localStorage.setItem("cm", JSON.stringify(cm));
+localStorage.setItem("gm", JSON.stringify(gm));
+
+}
+
+function baixo()
+{
+var w = document.getElementById("lista").selectedIndex;
+
+var auxtexto, auxaparelho, auxc, auxhrsd, auxvlrf, auxcm, auxgm;
+
+list, i, aparelho, c, hrsd, vlrf, cm, gm;
+
+
+if(list[w].index == (i-1) || list[w].index == -1)
+{
+return false;
+}
+else
+{
+auxtexto = list[w].text;
+auxaparelho = aparelho[w];
+auxc = c[w];
+auxhrsd = hrsd[w];
+auxvlrf = vlrf[w];
+auxcm = cm[w];
+auxgm = gm[w];
+
+list[w].text = list[w+1].text;
+aparelho[w] = aparelho[w+1];
+c[w] = c[w+1];
+hrsd[w] = hrsd[w+1];
+vlrf[w] = vlrf[w+1];
+cm[w] = cm[w+1];
+gm[w] = gm[w+1];
+
+list[w+1].text = auxtexto;
+aparelho[w+1] = auxaparelho;
+c[w+1] = auxc;
+hrsd[w+1] = auxhrsd;
+vlrf[w+1] = auxvlrf;
+cm[w+1] = auxcm;
+gm[w+1] = auxgm;
+
+list.selectedIndex = w+1;
+}
+
+localStorage.setItem("aparelho", JSON.stringify(aparelho));
+localStorage.setItem("c", JSON.stringify(c));
+localStorage.setItem("hrsd", JSON.stringify(hrsd));
+localStorage.setItem("vlrf", JSON.stringify(vlrf));
+localStorage.setItem("cm", JSON.stringify(cm));
+localStorage.setItem("gm", JSON.stringify(gm));
+
+}
+
+function deletar()
+{
+var w = document.getElementById("lista").selectedIndex;
+
+if(w != -1)
+{
+
+var auxtexto, auxaparelho, auxc, auxhrsd, auxvlrf, auxcm, auxgm;
+
+list, i, aparelho, c, hrsd, vlrf, cm, gm, ct, gt;
+
+
+for(w; w < (i-1); w++)
+{
+auxtexto = list[w].text;
+auxaparelho = aparelho[w];
+auxc = c[w];
+auxhrsd = hrsd[w];
+auxvlrf = vlrf[w];
+auxcm = cm[w];
+auxgm = gm[w];
+
+list[w].text = list[w+1].text;
+aparelho[w] = aparelho[w+1];
+c[w] = c[w+1];
+hrsd[w] = hrsd[w+1];
+vlrf[w] = vlrf[w+1];
+cm[w] = cm[w+1];
+gm[w] = gm[w+1];
+
+list[w+1].text = auxtexto;
+aparelho[w+1] = auxaparelho;
+c[w+1] = auxc;
+hrsd[w+1] = auxhrsd;
+vlrf[w+1] = auxvlrf;
+cm[w+1] = auxcm;
+gm[w+1] = auxgm;
+}
+
+if(w == 0)
+{
+ct = gt = 0;
+document.getElementById("aprtc").innerHTML = "";
+document.getElementById("aprtg").innerHTML = "";
+
+localStorage.removeItem('aparelho');
+localStorage.removeItem('c');
+localStorage.removeItem('hrsd');
+localStorage.removeItem('vlrf');
+localStorage.removeItem('cm');
+localStorage.removeItem('gm');
+localStorage.removeItem('ct');
+localStorage.removeItem('gt');
+}
+else
+{
+ct -= cm[w];
+gt -= gm[w];
+
+Math.ceil(ct);
+Math.ceil(gt);
+
+document.getElementById("aprtc").innerHTML = "CONSUMO TOTAL<br>"+ ct +" KW";
+document.getElementById("aprtg").innerHTML = "GASTO TOTAL<br> R$ "+ gt;
+
+}
+
+document.getElementById("sapr1").innerHTML = "";
+document.getElementById("sapr2").innerHTML = "";
+document.getElementById("sapr3").innerHTML = "";
+document.getElementById("sapr4").innerHTML = "";
+document.getElementById("sapr5").innerHTML = "";
+document.getElementById("sapr6").innerHTML = "";
+
+list.remove(w);
+aparelho.splice(w,1);
+c.splice(w,1);
+hrsd.splice(w,1);
+vlrf.splice(w,1);
+cm.splice(w,1);
+gm.splice(w,1);
+list.selectedIndex = -1;
+
+if(w != 0)
+{
+localStorage.setItem("aparelho", JSON.stringify(aparelho));
+localStorage.setItem("c", JSON.stringify(c));
+localStorage.setItem("hrsd", JSON.stringify(hrsd));
+localStorage.setItem("vlrf", JSON.stringify(vlrf));
+localStorage.setItem("cm", JSON.stringify(cm));
+localStorage.setItem("gm", JSON.stringify(gm));
+localStorage.setItem("ct", ct);
+localStorage.setItem("gt", gt);
+}
+
+
+i--;
+}
+else
+{
+return false;
+}
+
+}
+
+function apresentar()
+{
+var w = document.getElementById("lista").selectedIndex;
+
+list, aparelho, c, hrsd, cm, gm, ct, gt;
+
+if(w != -1)
+{
+document.getElementById("sapr1").innerHTML = "APARELHO: "+ aparelho[w];
+document.getElementById("sapr2").innerHTML = "CONSUMO: "+ c[w] + " WATTS";
+document.getElementById("sapr3").innerHTML = "USO DIÁRIO: "+ hrsd[w] + " HORAS";
+document.getElementById("sapr4").innerHTML = "VALOR DE FORNECIMENTO: R$ "+ vlrf[w];
+document.getElementById("sapr5").innerHTML = "CONSUMO MENSAL: "+ cm[w] + " KW";
+document.getElementById("sapr6").innerHTML = "GASTO MENSAL (R$/KW): R$ "+ gm[w];
+}
+}
+
+function enta()
+{
+p = eval(1);
+out();
+}
+
+function entb()
+{
+p = eval(2);
+out();
+}
+
+function entc()
+{
+p = eval(3);
+out();
+}
+
+function entd()
+{
+p = eval(0);
+out();
+}
+
+function teclado()
+{
+p;
+
+var key = event.keyCode;
+
+if(key == 13)
+{
+if(p == 3)
+{
+cadastro();
+document.getElementById("ent1").focus();
+}
+else
+{
+document.getElementById("ent"+ (p+1)).focus();
+}
+}
+}
+
+function out()
+{
+list;
+
+list.selectedIndex = -1;
+
+for(var i = eval(1); i <= 6; i++)
+{
+document.getElementById("sapr"+ i).innerHTML = "";
+}
+
+}
+
+</script>
+
+
+</body>
+
+
+
+
+</html>

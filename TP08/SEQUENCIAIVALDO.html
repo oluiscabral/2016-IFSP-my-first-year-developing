@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title>SEQUENCIAIVALDO</title>
+<link rel="shortcut icon" href="LC.ico"/>
+
+<script type="text/javascript">
+
+function calc()
+{
+var i=1, n=0;
+var texto= "";
+
+for(i, n, texto; i<=350; i++)
+{
+n = i + i*i;
+texto +=""+ n +"<br>"
+}
+document.getElementById("saida").innerHTML=texto;
+}
+</script>
+
+<link rel="stylesheet" type="text/css" href=".css">
+</head>
+
+
+<body>
+<input type="button" value="EXIBIR" onClick="calc()"></input>
+<p id="saida"></p>
+</body>
+
+</html>

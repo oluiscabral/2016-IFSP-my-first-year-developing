@@ -1,0 +1,106 @@
+<html>
+<head>
+<meta charset="utf-8">
+
+<style>
+#header
+{
+	width:100%;
+	height:100px;
+	background-color:black;
+	color:white;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	border:10px solid gray;
+	border-radius:10px;
+	clear:both;
+	
+	
+}
+#hsection
+{
+	width:100%;
+	height:100px;
+	background-color:white;
+	color:black;
+	border:5px groove black;
+	border-radius:10px;
+	text-align:center;
+	line-height:100%;
+	float:center;
+	clear:both;
+}
+#section
+{
+	width:50%;
+	height:500px;
+	background-color:lightyellow;
+	color:black;
+	border:5px dashed black;
+	float:center;
+	margin-left:25%;
+}
+h1.header1
+{
+	margin:auto;
+	text-align:center;
+}
+p.section1
+{
+	font-family:Arial;
+	margin:auto;
+	margin-top:10px;
+	text-align:center;
+	font-size:40px;
+}
+p.tab
+{
+	font-family:Courier New;
+	margin:auto;
+	text-align:center;
+	font-size:30px;
+}
+</style>
+
+<script type="text/javascript">
+
+function Calc(){
+
+	var n, nx, nr, tab;
+	tab = "";
+	n = parseInt(document.getElementById("number").value);
+	if(n < 1){alert("Insira números maiores que 0"); document.getElementById("tabuadat").innerHTML = "- ERRO -"; document.getElementById("tabuada").innerHTML = "";}
+	else{
+	if(n > 10){alert("Insira números menores ou iguais que 10"); document.getElementById("tabuadat").innerHTML = "- ERRO -"; document.getElementById("tabuada").innerHTML = "";}
+	else{
+	for(nx = 1; nx <= 10; nx++)
+	
+	{
+	
+	nr = n * nx;
+	tab += ""+ n +" x ";
+	tab += ""+ nx +" = ";
+	tab += ""+ nr +"<br>";	
+	
+	}
+	
+	document.getElementById("tabuadat").innerHTML = "Tabuada do "+ n +"<br>";	
+	document.getElementById("tabuada").innerHTML = ""+ tab +"";
+
+	}
+	}
+	}
+</script>
+
+</head>
+
+<body bgcolor="lightgreen">
+<div id="hsection"><p>Tabuada de 0-10 números<br>Número desejado	
+<input type="text" id="number" name="tab1" value="01" size="1" maxlenght="2"><input type="submit" value="Calcular" onclick="Calc()"></p></div>
+<div id="section"><p class="section1" id="tabuadat"></p><br>
+<p class="tab" id="tabuada"></div>
+</body>
+
+
+</html>

@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Loop</title>
+
+<style>
+</style>
+
+<script type="text/javascript">
+
+function LA(){
+
+	var anoi;
+	var anof;
+	var msg;
+	var qtanos;
+	var aqtanos;
+	var mqtanos;
+	var maqtanos;
+	
+	maqtanos = "Número de anos apresentados: "
+	mqtanos = "Diferença de anos: "	
+	msg = ""
+	anoi = parseInt(document.getElementById("ano1").value);
+	anof = parseInt(document.getElementById("ano2").value);
+	qtanos = anof - anoi;
+	aqtanos = qtanos + 1;
+	
+	if (qtanos > 100000){
+
+	alert("Insira uma diferença menor ou igual de 100 mil anos");
+	document.getElementById("txt").innerHTML = "Não vai travar o computador";
+	mqtanos += qtanos;	
+	aqtanos = 0;
+	maqtanos += aqtanos;
+	document.getElementById("mqtanos").innerHTML =""+ mqtanos +"";
+	document.getElementById("maqtanos").innerHTML =""+ maqtanos +"";
+}
+	else{
+	
+	if (aqtanos < 1){
+	aqtanos = 0;
+}
+	mqtanos += qtanos;
+	maqtanos += aqtanos;
+	
+	for (anoi == anoi; anoi <= anof; anoi++){
+	msg += ""+ anoi +" ";
+	}
+	document.getElementById("txt").innerHTML = msg;
+	document.getElementById("maqtanos").innerHTML = maqtanos;
+	document.getElementById("mqtanos").innerHTML = mqtanos;
+}
+	}
+</script>
+
+</head>
+
+<body bgcolor="lightgreen">
+<center>
+<font face="Arial"><h1> Loop de Anos </h1>
+<p>Ano de ínicio: <input type="text" size="1" id="ano1" value="2016"><br>
+Ano final: <input type="text" size="1" id="ano2" value="0"><br>
+<input type="submit" value="Loop" onclick="LA()"></p><br>
+<p id="mqtanos"></p>
+<p id="maqtanos"></p></font>
+</center>
+<justify>
+<font face="Courier New"><p id="txt"></p></font>
+</justify>
+</body>
+
+
+</html>

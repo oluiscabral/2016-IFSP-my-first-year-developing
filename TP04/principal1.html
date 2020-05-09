@@ -1,0 +1,75 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+</meta>
+<title>
+Média Escolar
+</title>
+<script type="text/javascript">
+
+function Media()
+{
+var n1;
+var n2;
+var n3;
+var n4;
+var res;
+var apv;
+
+n1 = document.getElementById("number1").value;
+n2 = document.getElementById("number2").value;
+n3 = document.getElementById("number3").value;
+n4 = document.getElementById("number4").value;
+
+if(isNaN(n1)){alert("Insira somente números(nota 1 foi redefinida para 0)."); n1 = 0;}
+if(isNaN(n2)){alert("Insira somente números(nota 2 foi redefinida para 0)."); n2 = 0;}
+if(isNaN(n3)){alert("Insira somente números(nota 3 foi redefinida para 0)."); n3 = 0;}
+if(isNaN(n4)){alert("Insira somente números(nota 4 foi redefinida para 0)."); n4 = 0;}
+
+if(n1 == ""){n1 = 0}
+if(n2 == ""){n2 = 0}
+if(n3 == ""){n3 = 0}
+if(n4 == ""){n4 = 0}
+
+n1 = parseInt(n1);
+n2 = parseInt(n2);
+n3 = parseInt(n3);
+n4 = parseInt(n4);
+
+if(n1 > 10){alert("Insira uma nota menor ou igual que 10"); n1 = 0;}
+if(n2 > 10){alert("Insira uma nota menor ou igual que 10"); n2 = 0;}
+if(n3 > 10){alert("Insira uma nota menor ou igual que 10"); n3 = 0;}
+if(n4 > 10){alert("Insira uma nota menor ou igual que 10"); n4 = 0;}
+
+res = (n1 + n2 + n3 + n4) / 4;
+apv = (res >= 5.75) ? "Aprovado":
+apv = (res > 4) ? "Recuperação":"Reprovado";
+document.getElementById("yyy").innerHTML="" + apv + "";
+document.getElementById("zzz").innerHTML=""+ res + "";
+}
+</script>
+
+</head>
+<body bgcolor="lightgreen">
+<center>
+<table width="50%" height="50%" border="2"><tr><th colspan="2"><font size="5" color="Black" face="Arial">Média Escolar</font></th></tr>
+<tr><td align="center"><font color="Black" face="Arial">
+NT1:<input size="1" maxlength="2" type="text" id="number1">
+<br>
+NT2:<input size="1" maxlength="2" type="text" id="number2">
+<br>
+NT3:<input size="1" maxlength="2" type="text" id="number3">
+<br>
+NT4:<input size="1" maxlength="2" type="text" id="number4">
+</td><td align="center"><input type="submit" value="Calcular" onclick="Media()">
+</td>
+</tr>
+<tr>
+<th colspan="2" id="zzz"><br></th></tr>
+<tr><th colspan="2" id="yyy"><br></th></tr>
+</center></body>
+</html>
+
+
+
+

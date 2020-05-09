@@ -1,0 +1,86 @@
+﻿<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title>LUIS CABRAL</title>
+<link rel="shortcut icon" href="LC.ico"/>
+
+<style>
+
+</style>
+
+</head>
+
+
+<body>
+
+<p id="saida1"></p>
+
+<input type="button" value="servidor" onclick="servidor()"/>
+
+<script>
+
+function servidor()
+{
+
+try
+{
+
+var connection = new ActiveXObject("ADODB.Connection");
+
+var connectionstring=
+
+     "DRIVER={MySql ODBC 5.1 Driver};" + 
+     "SERVER=db4free.net;" + 
+     "Port=3307;" +
+     "DATABASE=bdlc;" + 
+     "USER=cabral;" + 
+     "PASSWORD=123456;";
+
+connection.Open(connectionstring);
+
+
+
+var rs = new ActiveXObject("ADODB.Recordset");
+
+/*
+rs.Open("SELECT * FROM ALUNO", connection, 1, 3);
+
+rs.addnew;
+rs.Fields("NOME").value = "LUIS CARLOS CABRAL JUNIOR";
+rs.Fields("PRONTUARIO").value = "1690591";
+rs.Update;
+
+
+rs.close;
+
+*/
+
+rs.Open("SELECT * FROM ALUNO", connection);
+
+rs.MoveFirst;
+
+while(!rs.eof)
+{
+   document.getElementById("saida1").innerHTML += rs.fields(1) + ", "+ rs.fields(2) +"<br>";
+   rs.movenext;
+}
+
+rs.close;
+connection.close;
+
+}
+catch(err)
+{
+alert(err.description);
+}
+
+
+}
+
+</script>
+
+</body>
+
+</html>
+

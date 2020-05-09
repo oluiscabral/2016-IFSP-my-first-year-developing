@@ -1,0 +1,238 @@
+<html>
+
+<head>
+<title>TP281016</title>
+<link rel="shortcut icon" href="LC.ico"/>
+
+<style>
+html, body
+{
+position:absolute;
+margin: 0;
+width:100%;
+height:100%;
+background-color: #b3d9ff;
+}
+
+#principal
+{
+position:relative;
+margin:0 auto;
+top:25%;
+}
+
+div.pheader
+{
+position:relative;
+display:block;
+width:100%;
+height:10%;
+background-color:#1a66ff;
+font-size:25px;
+font-family:Courier New;
+font-weight:bold;
+line-height:175%;
+text-align:center;
+}
+
+a.pcont
+{
+position:relative;
+display:block;
+width:100%;
+height:10%;
+background-color:#1a66ff;
+font-size:15px;
+font-family:Arial;
+line-height:250%;
+text-align:center;
+}
+
+div.penta
+{
+position:relative;
+display:block;
+width:100%;
+height:10%;
+background-color:#1a66ff;
+text-align:center;
+font-size:20px;
+font-family:Arial;
+line-height:190%;
+}
+
+div.pentb
+{
+position:relative;
+display:block;
+width:100%;
+height:10%;
+background-color:#1a66ff;
+text-align:center;
+}
+
+div.pentb input
+{
+position:relative;
+top:50%;
+transform: translate(0, -50%);
+width:80%;
+height:80%;
+text-align:center;
+}
+
+a.pbt
+{
+position:relative;
+display:block;
+background-color:white;
+width:100%;
+height:10%;
+text-align:center;
+line-height:250%;
+color:black;
+text-decoration:none;
+font-family:aharoni;
+}
+
+a.pbt:hover
+{
+background-color:black;
+color:white;
+}
+
+a.pbt:active
+{
+background-color:gray;
+color:white;
+}
+
+a.ps
+{
+position:relative;
+margin:0px;
+display:block;
+width:100%;
+height:10%;
+background-color:#80aaff;
+line-height:250%;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="principal">
+<div class="pheader">CADASTRO DINÂMICO</div>
+<a id="s0" class="pcont">NENHUM NÚMERO CADASTRADO</a>
+<div class="penta">ENTRADA</div>
+<div class="pentb"><input type="text" onkeyup="teclado()" id="ent0"/></div>
+<a class="pbt" href="javascript: cadastro()">CADASTRO</a>
+
+<a id="s1" class="ps"></a>
+<a id="s2" class="ps"></a>
+<a id="s3" class="ps"></a>
+<a id="s4" class="ps"></a>
+<a id="s5" class="ps"></a>
+</div>
+
+
+
+<script>
+
+var nv = [];
+var i,sm, m, ma, mn, np, nn;
+i = sm = np = nn = eval(0);
+
+var ww = screen.availWidth;
+var wh = screen.availHeight;
+
+document.getElementById("principal").style.width = ww/4;
+document.getElementById("principal").style.height = wh/2;
+
+
+document.getElementById("ent0").focus();
+
+
+function cadastro()
+{
+ma,mn;
+i;
+
+if(i < 10)
+{
+
+nv[i] = eval(document.getElementById("ent0").value);
+
+if(isNaN(nv[i])){return false;}
+
+sm = eval(sm + nv[i]);
+m = sm / (i+1);
+
+document.getElementById("ent0").value="";
+
+if(nv[i] > 0)
+{
+np++;
+}
+else
+{
+if(nv[i] < 0)
+{
+nn++;
+}
+}
+
+if(i == 0)
+{
+ma = mn = nv[0];
+}
+else
+{
+if(nv[i] > ma){ma = nv[i];}else{if(nv[i] < mn){mn = nv[i];}}
+}
+
+
+i++;
+
+if(i == 1)
+{
+document.getElementById("s0").innerHTML = i +" NÚMERO CADASTRADO";
+}
+else
+{
+document.getElementById("s0").innerHTML = i +" NÚMEROS CADASTRADOS";
+}
+
+document.getElementById("s1").innerHTML = "MÉDIA DOS NÚMEROS: "+ m;
+document.getElementById("s2").innerHTML = "MAIOR NÚMERO: "+ ma;
+document.getElementById("s3").innerHTML = "MENOR NÚMERO: "+ mn;
+
+if(np == 0){document.getElementById("s4").innerHTML = "NENHUM NÚMERO POSITIVO";}
+else{document.getElementById("s4").innerHTML = "NÚMEROS POSITIVOS: "+ np;}
+
+if(nn == 0){document.getElementById("s5").innerHTML = "NENHUM NÚMERO NEGATIVO";}
+else{document.getElementById("s5").innerHTML = "NÚMEROS NEGATIVOS: "+ nn;}
+
+}
+else
+{
+document.getElementById("s0").innerHTML = "MÁXIMO DE 10 CADASTROS";
+}
+}
+
+function teclado()
+{
+
+var key = event.keyCode;
+
+if(key == 13)
+{
+cadastro();
+}
+}
+</script>
+</body>
+</html>

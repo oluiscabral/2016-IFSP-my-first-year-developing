@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title>FIBONACCI</title>
+<link rel="shortcut icon" href="LC.ico"/>
+
+<script type="text/javascript">
+
+function calc()
+{
+var n=1, pn=1, a=0, i, un;
+var texto="";
+
+i = document.getElementById("ent1").value;
+un = document.getElementById("ent2").value;
+
+for(var c=1; c < i; c++)
+{
+a = pn;
+pn = pn + n;
+n = a;
+}
+
+for(var k=1; k <= un; k++)
+{
+texto += n +"<br>";
+a = pn;
+pn = pn + n;
+n = a;
+}
+
+document.getElementById("saida").innerHTML=texto;
+}
+</script>
+
+<link rel="stylesheet" type="text/css" href="estilo.css">
+</head>
+
+
+<body>
+<div id="principal">
+<center><p>INÍCIO</p><input type="text" value="1" id="ent1"></input>
+<p>QUANTIDADE DE NÚMEROS DA SEQUÊNCIA</p><input type="text" value="6" id="ent2"></input><br>
+<input type="button" value="EXIBIR" onClick="calc()"></input>
+<p id="saida"></p>
+</center>
+</div>
+</body>
+
+</html>

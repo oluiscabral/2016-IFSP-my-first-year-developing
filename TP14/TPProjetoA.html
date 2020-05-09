@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title>TPProjeto</title>
+<link rel="shortcut icon" href="LC.ico"/>
+<link rel="stylesheet" type="text/css" href="estiloa.css">
+</head>
+
+
+<body>
+
+<input type="file" id="fload" accept=".bdlc"/><br>
+<input type="text" id="ent0"/>
+<input type="button" value="ENVIAR" onClick="teste1()"/><br>
+
+<p id="saida0"></p>
+<p id="saida1"></p>
+<p id="saida2"></p>
+<p id="saida3"></p>
+<p id="saida4"></p>
+<p id="saida5"></p>
+<p id="saida6"></p>
+<p id="saida7"></p>
+<p id="saida8"></p>
+<p id="saida9"></p>
+
+
+
+<script>
+function teste1()
+{
+var fl = document.getElementById("fload").files[0];
+var flr = new FileReader();
+flr.onload = function carregar()
+{
+var conteudo = flr.result;
+organizar(conteudo);
+}
+flr.readAsText(fl, "UTF-8");
+}
+
+function organizar(conteudo)
+{
+
+var a = document.getElementById("ent0").value;
+
+var bd = conteudo.split('[div]');
+bd.splice(0,1);
+
+
+for(var g=0; g < bd.length; g++)
+{
+bd[g] = bd[g].split('[item]');
+bd[g].splice(0,1);
+}
+
+
+for(var g=0; g < bd.length; g++)
+for(var h=0; h < bd[g].length; h++)
+{
+bd[g][h] = bd[g][h].split('|');
+bd[g][h].splice(0,1);
+}
+
+document.getElementById("saida0").innerHTML = bd[0][a];
+
+
+
+}
+</script>
+</body>
+</html>

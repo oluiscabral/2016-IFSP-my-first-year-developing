@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title>TPCheckBox</title>
+
+
+<script type="text/javascript">
+
+function calc()
+{
+var v1,v2, s=0, i;
+
+
+var l = document.getElementById("lista");
+
+v1=eval(document.getElementById("ent1").value);
+v2=eval(document.getElementById("ent2").value);
+
+for(i=1; i <= v2; i++)
+{
+s += v1;
+}
+
+
+if(document.getElementById("par").checked && s%2 == 0)
+{
+var o = document.createElement("option");
+
+o.text = s;
+
+l.add(o);
+}
+else
+{
+if(document.getElementById("impar").checked && s%2 != 0)
+{
+var o = document.createElement("option");
+
+o.text = s;
+
+l.add(o);
+
+}}
+
+
+
+
+}
+
+
+</script>
+
+<style>
+
+</style>
+
+</head>
+
+
+<body>
+<input type="text" id="ent1"/><br>
+<input type="text" id="ent2"/><br>
+PAR<input type="checkbox" id="par"/><br>
+IMPAR<input type="checkbox" id="impar"/><br>
+<input type="button" onclick="calc()" value="Piloto"/><br><br>
+
+<select id="lista" size="10" multiple="multiple">
+</select>
+<br>
+
+
+
+</body>
+
+</html>

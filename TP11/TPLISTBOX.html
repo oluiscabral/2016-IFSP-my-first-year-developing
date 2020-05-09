@@ -1,0 +1,522 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+
+<title>TPLISTBOX</title>
+
+
+<link rel="shortcut icon" href="LC.ico"/>
+
+
+
+
+<style>
+
+html, body
+{
+margin: 0;
+width:100%;
+height:100%;
+background-color:black;
+}
+
+div.principal
+{
+position:relative;
+top:10%;
+margin:auto;
+width:1000px;
+min-width:800px;
+height:500px;
+min-height:500px;
+}
+
+div.cad
+{
+float:right;
+width:50%;
+height:100%;
+}
+
+div.headercad
+{
+width:100%;
+height:50px;
+background-color:#2A2A2A;
+text-align:center;
+}
+
+a.header
+{
+font-family:aharoni;
+font-size:25px;
+color:white;
+margin: 0;
+position: relative;
+top: 30%;
+}
+
+div.cadinpa
+{
+width:60%;
+height:100px;
+background-color:#4A4A4A;
+float:left;
+display:inline-block;
+text-align:center;
+}
+
+div.cadinpa a
+{
+margin: 0;
+position: relative;
+top: 40%;
+font-size:20px;
+font-family:Courier New;
+color:white;
+font-weight:bold;
+}
+
+div.cadinpb
+{
+width:40%;
+height:100px;
+background-color:#4A4A4A;
+float:left;
+display:inline-block;
+position: relative;
+}
+
+div.cadinpb input
+{
+width:80%;
+height:30%;
+font-size:20px;
+margin: 0;
+text-align:center;
+position: relative;
+top: 50%;
+transform: translate(0, -50%);
+}
+
+a.cadbt
+{
+width:100%;
+height:50px;
+background-color:#2A2A2A;
+text-align:center;
+line-height:300%;
+display:inline-block;
+margin: 0;
+position: relative;
+color:white;
+text-decoration:none;
+font-family:aharoni;
+}
+
+a.cadbt:hover
+{
+background-color:white;
+
+color:black;
+}
+
+a.cadbt:active
+{
+background-color:#2A2A2A;
+color:#101010;
+}
+
+div.apr
+{
+position:relative;
+float:left;
+width:50%;
+height:100%;
+}
+
+div.headerapr
+{
+position:relative;
+width:100%;
+height:50px;
+background-color:#2A2A2A;
+text-align:center;
+}
+
+select.listbox
+{
+position:relative;
+margin:20px 25% 0px 25%;
+height:130px;
+width:50%;
+float:center;
+background-color:#2A2A2A;
+color:white;
+border:none;
+outlne:none;
+text-align:center;
+}
+
+select.listbox:focus
+{
+outline:none;
+}
+
+div.apra
+{
+position:relative;
+width:100%;
+height:50%;
+background-color:#8A8A8A;
+text-align:center;
+}
+
+a.btcont
+{
+line-height:150%;
+position:relative;
+margin-right:auto;
+text-align:center;
+width:25%;
+display:inline-block;
+color:white;
+font-family:Arial;
+font-weight:bold;
+background-color:#2A2A2A;
+text-decoration:none;
+height:25px;
+}
+
+a.btcont:hover
+{
+background-color:white;
+
+color:black;
+
+}
+
+a.btcont:active
+{
+background-color:#101010;
+color:white;
+}
+
+div.aprb
+{
+position:relative;
+width:100%;
+height:40%;
+background-color:#101010;
+color:white;
+}
+
+div.aprb p
+{
+margin:0px 0px 0px 10px;
+}
+
+div.aprt
+{
+float:left;
+margin: 10px 0px 0px 0px;
+width:50%;
+height:40px;
+display:block;
+background-color:#2a2a2a;
+color:white;
+text-align:center;
+}
+
+div.footer
+{
+position:relative;
+display:block;
+clear:both;
+width:1000px;
+min-width:800px;
+height:20px;
+background-color:#484CB7;
+text-align:left;
+}
+
+div.footer a
+{
+margin-left:10px;
+font-family:Courier New;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="principal">
+<div class="apr">
+<div class="headerapr"><a class="header">LISTAGEM</a></div>
+<div class="apra">
+<select onclick="apresentar()" class="listbox" id="lista" size="10" multiple="multiple"></select>
+<a onclick="cima()" href="#" class="btcont">ACIMA</a><a onclick="baixo()" href="#" class="btcont">ABAIXO</a><br>
+<a onclick="deletar()" href="#" class="btcont">DELETAR</a><br>
+<div class="aprt"><a id="aprtc"></a></div><div class="aprt"><a id="aprtg"></a></div>
+</div>
+
+<div class="aprb">
+<p id="sapr1"></p><br>
+<p id="sapr2"></p><br>
+<p id="sapr3"></p><br>
+<p id="sapr4"></p><br>
+<p id="sapr5"></p><br>
+<p id="sapr6"></p>
+</div>
+</div>
+
+
+<div class="cad">
+<div class="headercad"><a class="header">CADASTRO</a></div>
+<form id="cadform">
+<div class="cadinpa"><a>APARELHO</a></div><div class="cadinpb"><input id="entap" type="text"/></div>
+<div class="cadinpa"><a>CONSUMO (W)</a></div><div class="cadinpb"><input id="entc" type="text"/></div>
+<div class="cadinpa"><a>USO (HR/D)</a></div><div class="cadinpb"><input id="enthrsd" type="text"/></div>
+</form>
+<div class="cadinpa"><a>VALOR DE FORNECIMENTO</a></div><div class="cadinpb"><input id="entrf" type="text"/></div>
+<a class="cadbt" href="#" onclick="cadastro()">ARMAZENAR</a>
+</div>
+
+
+<script>
+var aparelho = [];
+var c = [];
+var hrsd = [];
+var vlrf = [];
+var cm = [];
+var gm = [];
+
+var ct = eval(0);
+var gt = eval(0);
+
+var i=eval(0);
+
+var list = document.getElementById("lista");
+
+
+function cadastro()
+{
+i, list, ct, gt;
+
+
+var x = document.createElement("option");
+
+aparelho[i] = document.getElementById("entap").value;
+c[i] = eval(document.getElementById("entc").value);
+hrsd[i] = eval(document.getElementById("enthrsd").value);
+vlrf[i] = eval(document.getElementById("entrf").value);
+
+cm[i] = (c[i] * hrsd[i] * 30) / 1000;
+gm[i] = cm[i] * vlrf[i];
+
+x.text = aparelho[i];
+
+list.add(x);
+
+document.getElementById("cadform").reset();
+
+ct += cm[i];
+gt += gm[i];
+Math.round(ct);
+Math.round(gt);
+
+document.getElementById("aprtc").innerHTML = "CONSUMO TOTAL<br>"+ ct +" KW";
+document.getElementById("aprtg").innerHTML = "GASTO TOTAL<br> R$ "+ gt;
+
+i++;
+}
+
+function cima()
+{
+var w = document.getElementById("lista").selectedIndex;
+
+var auxtexto, auxaparelho, auxc, auxhrsd, auxvlrf, auxcm, auxgm;
+
+list, aparelho, c, hrsd, vlrf, cm, gm;
+
+
+if(list[w].index != 0 || list[w].index != -1)
+{
+auxtexto = list[w].text;
+auxaparelho = aparelho[w];
+auxc = c[w];
+auxhrsd = hrsd[w];
+auxvlrf = vlrf[w];
+auxcm = cm[w];
+auxgm = gm[w];
+
+list[w].text = list[w-1].text;
+aparelho[w] = aparelho[w-1];
+c[w] = c[w-1];
+hrsd[w] = hrsd[w-1];
+vlrf[w] = vlrf[w-1];
+cm[w] = cm[w-1];
+gm[w] = gm[w-1];
+
+list[w-1].text = auxtexto;
+aparelho[w-1] = auxaparelho;
+c[w-1] = auxc;
+hrsd[w-1] = auxhrsd;
+vlrf[w-1] = auxvlrf;
+cm[w-1] = auxcm;
+gm[w-1] = auxgm;
+
+list.selectedIndex = w-1;
+}
+
+}
+
+function baixo()
+{
+var w = document.getElementById("lista").selectedIndex;
+
+var auxtexto, auxaparelho, auxc, auxhrsd, auxvlrf, auxcm, auxgm;
+
+list, i, aparelho, c, hrsd, vlrf, cm, gm;
+
+
+if(list[w].index != (i-1) || list[w].index != -1)
+{
+auxtexto = list[w].text;
+auxaparelho = aparelho[w];
+auxc = c[w];
+auxhrsd = hrsd[w];
+auxvlrf = vlrf[w];
+auxcm = cm[w];
+auxgm = gm[w];
+
+list[w].text = list[w+1].text;
+aparelho[w] = aparelho[w+1];
+c[w] = c[w+1];
+hrsd[w] = hrsd[w+1];
+vlrf[w] = vlrf[w+1];
+cm[w] = cm[w+1];
+gm[w] = gm[w+1];
+
+list[w+1].text = auxtexto;
+aparelho[w+1] = auxaparelho;
+c[w+1] = auxc;
+hrsd[w+1] = auxhrsd;
+vlrf[w+1] = auxvlrf;
+cm[w+1] = auxcm;
+gm[w+1] = auxgm;
+
+list.selectedIndex = w+1;
+}
+
+}
+
+function deletar()
+{
+var w = document.getElementById("lista").selectedIndex;
+
+var auxtexto, auxaparelho, auxc, auxhrsd, auxvlrf, auxcm, auxgm;
+
+list, i, aparelho, c, hrsd, vlrf, cm, gm, ct, gt;
+
+if(w != -1)
+{
+for(w; w < (i-1); w++)
+{
+auxtexto = list[w].text;
+auxaparelho = aparelho[w];
+auxc = c[w];
+auxhrsd = hrsd[w];
+auxvlrf = vlrf[w];
+auxcm = cm[w];
+auxgm = gm[w];
+
+list[w].text = list[w+1].text;
+aparelho[w] = aparelho[w+1];
+c[w] = c[w+1];
+hrsd[w] = hrsd[w+1];
+vlrf[w] = vlrf[w+1];
+cm[w] = cm[w+1];
+gm[w] = gm[w+1];
+
+list[w+1].text = auxtexto;
+aparelho[w+1] = auxaparelho;
+c[w+1] = auxc;
+hrsd[w+1] = auxhrsd;
+vlrf[w+1] = auxvlrf;
+cm[w+1] = auxcm;
+gm[w+1] = auxgm;
+}
+
+if(w == 0)
+{
+ct = gt = 0;
+document.getElementById("aprtc").innerHTML = "";
+document.getElementById("aprtg").innerHTML = "";
+}
+else
+{
+ct -= cm[w];
+gt -= gm[w];
+
+document.getElementById("aprtc").innerHTML = "CONSUMO TOTAL<br>"+ ct +" KW";
+document.getElementById("aprtg").innerHTML = "GASTO TOTAL<br> R$ "+ gt;
+
+}
+
+
+document.getElementById("sapr1").innerHTML = "";
+document.getElementById("sapr2").innerHTML = "";
+document.getElementById("sapr3").innerHTML = "";
+document.getElementById("sapr4").innerHTML = "";
+document.getElementById("sapr5").innerHTML = "";
+document.getElementById("sapr6").innerHTML = "";
+
+list.remove(w);
+aparelho.splice(w,1);
+c.splice(w,1);
+hrsd.splice(w,1);
+vlrf.splice(w,1);
+cm.splice(w,1);
+gm.splice(w,1);
+list.selectedIndex = -1;
+
+i--;
+}
+}
+
+function apresentar()
+{
+var w = document.getElementById("lista").selectedIndex;
+
+list, aparelho, c, hrsd, cm, gm, ct, gt;
+
+if(w != -1)
+{
+document.getElementById("sapr1").innerHTML = "APARELHO: "+ aparelho[w];
+document.getElementById("sapr2").innerHTML = "CONSUMO: "+ c[w] + " WATTS";
+document.getElementById("sapr3").innerHTML = "USO DIÁRIO: "+ hrsd[w] + " HORAS";
+document.getElementById("sapr4").innerHTML = "VALOR DE FORNECIMENTO: R$ "+ vlrf[w];
+document.getElementById("sapr5").innerHTML = "CONSUMO MENSAL: "+ cm[w] + " KW";
+document.getElementById("sapr6").innerHTML = "GASTO MENSAL (R$/KW): R$ "+ gm[w];
+}
+
+}
+</script>
+
+
+</body>
+
+
+
+
+</html>

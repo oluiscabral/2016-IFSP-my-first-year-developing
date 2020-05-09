@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+
+<title>LUIS CABRAL</title>
+
+
+<link rel="shortcut icon" href="LC.ico"/>
+
+
+
+
+<style>
+
+html, body
+{
+margin: 0;
+width:100%;
+height:90%;
+background-color:#2D2D2D;
+}
+
+div.principal
+{
+margin:5% 0% 0% 0%;
+position:relative;
+display:inline-block;
+width:40%;
+height:80%;
+text-align:center;
+float:left;
+background-color:black;
+}
+
+div.dados
+{
+margin:5% 0% 0% 0%;
+position:relative;
+display:inline-block;
+width:60%;
+height:80%;
+text-align:center;
+background-color:black;
+}
+
+div.header
+{
+width:100%;
+height:10%;
+background-color:black;
+text-align:center;
+font-family:Courier New;
+font-size:large;
+color:white;
+}
+
+a.center
+{
+top: 25%;
+position: relative;
+}
+
+div.trab
+{
+position:relative;
+width:100%;
+height:10%;
+background-color:black;
+text-align:center;
+font-family:Courier New;
+font-size:large;
+color:white;
+}
+
+div.trabinfo
+{
+position:relative;
+width:100%;
+height:10%;
+background-color:black;
+text-align:center;
+font-family:Courier New;
+font-size:large;
+color:white;
+}
+
+input.entrada
+{
+position:relative;
+width:100%;
+height:10%;
+background-color:#2D2D2D;
+text-align:center;
+font-family:Courier New;
+font-size:large;
+color:white;
+box-shadow: 0 0 0 0;
+border: 0 none;
+outline:0;
+}
+
+input.entrada1
+{
+position:relative;
+width:100%;
+height:10%;
+background-color:black;
+text-align:center;
+font-family:Courier New;
+font-size:large;
+color:white;
+box-shadow: 0 0 0 0;
+border: 0;
+outline-color:white;
+}
+
+div.trabn
+{
+position:relative;
+width:10%;
+height:10%;
+display:inline-block;
+background-color:black;
+text-align:center;
+font-family:Courier New;
+font-size:large;
+color:white;
+}
+
+div.mtrab
+{
+position:relative;
+width:90%;
+height:10%;
+display:inline-block;
+background-color:black;
+text-align:left;
+font-family:Courier New;
+font-size:large;
+color:white;
+}
+</style>
+
+
+
+</head>
+
+<body>
+
+<div class="principal">
+<div class="header"><a class="center">FOLHA DE PAGAMENTO DE 10 TRABALHADORES</a></div>
+<div class="trab"><a class="center" id="ntrab">1º TRABALHADOR</a></div>
+<div class="trabinfo"><a class="center">NOME</a></div>
+<input type="text" class="entrada" placeholder="A-Z" maxlength="25" required="required" id="entnomes"></input>
+<div class="trabinfo"><a class="center">VALOR DA HORA</a></div>
+<input type="text" class="entrada" placeholder="R$----" maxlength="4" required="required" id="entvlrhr"></input>
+<div class="trabinfo"><a class="center">QUANTIDADE DE HORAS</a></div>
+<input type="text" class="entrada" placeholder="----H" maxlength="4" required="required" id="entqtdhr"></input>
+<input type="button" class="entrada1" value="ARMAZENAR" onclick="contador()"></input>
+</div>
+
+<div class="dados">
+<div class="trabn">01 ||</div><div class="mtrab">NOME: <a id="saidanm1"></a> SALÁRIO BRUTO: <a id="saidabt1"></a> SALÁRIO LÍQUIDO: <a id="saidal1"></a></div>
+<div class="trabn">02 ||</div><div class="mtrab">NOME: <a id="saidanm2"></a> SALÁRIO BRUTO: <a id="saidabt2"></a> SALÁRIO LÍQUIDO: <a id="saidal2"></a></div>
+<div class="trabn">03 ||</div><div class="mtrab">NOME: <a id="saidanm3"></a> SALÁRIO BRUTO: <a id="saidabt3"></a> SALÁRIO LÍQUIDO: <a id="saidal3"></a></div>
+<div class="trabn">04 ||</div><div class="mtrab">NOME: <a id="saidanm4"></a> SALÁRIO BRUTO: <a id="saidabt4"></a> SALÁRIO LÍQUIDO: <a id="saidal4"></a></div>
+<div class="trabn">05 ||</div><div class="mtrab">NOME: <a id="saidanm5"></a> SALÁRIO BRUTO: <a id="saidabt5"></a> SALÁRIO LÍQUIDO: <a id="saidal5"></a></div>
+<div class="trabn">06 ||</div><div class="mtrab">NOME: <a id="saidanm6"></a> SALÁRIO BRUTO: <a id="saidabt6"></a> SALÁRIO LÍQUIDO: <a id="saidal6"></a></div>
+<div class="trabn">07 ||</div><div class="mtrab">NOME: <a id="saidanm7"></a> SALÁRIO BRUTO: <a id="saidabt7"></a> SALÁRIO LÍQUIDO: <a id="saidal7"></a></div>
+<div class="trabn">08 ||</div><div class="mtrab">NOME: <a id="saidanm8"></a> SALÁRIO BRUTO: <a id="saidabt8"></a> SALÁRIO LÍQUIDO: <a id="saidal8"></a></div>
+<div class="trabn">09 ||</div><div class="mtrab">NOME: <a id="saidanm9"></a> SALÁRIO BRUTO: <a id="saidabt9"></a> SALÁRIO LÍQUIDO: <a id="saidal9"></a></div>
+<div class="trabn">10 ||</div><div class="mtrab">NOME: <a id="saidanm10"></a> SALÁRIO BRUTO: <a id="saidabt10"></a> SALÁRIO LÍQUIDO: <a id="saidal10"></a></div>
+
+</div>
+
+
+<script>
+var nomes = [];
+var vlrhr = [];
+var qtdhr = [];
+var sb = [];
+var sl = [];
+var i = eval(0);
+
+function contador()
+{
+i;
+
+if(i <= 9)
+{
+nomes[i] = document.getElementById("entnomes").value;
+vlrhr[i] = eval(document.getElementById("entvlrhr").value);
+qtdhr[i] = eval(document.getElementById("entqtdhr").value);
+sb[i] = vlrhr[i] * qtdhr[i];
+sl[i] = sb[i];
+
+if(sb[i] <= 1556){sl[i] = sl[i] - sb[i] * 0.08;}
+if(sb[i] > 1556 && sl[i] <= 2594){sl[i] = sl[i] - sb[i] * 0.09;}
+if(sb[i] > 2594 && sl[i] <= 5189){sl[i] = sl[i] - sb[i] * 0.11;}
+if(sb[i] > 5189){sl[i] = sl[i] - 570;}
+
+if(sb[i] >= 1904 && sb[i] < 2826){sl[i] = sl[i] - sb[i] * 0.075;}
+if(sb[i] >= 2826 && sb[i] < 3751){sl[i] = sl[i] - sb[i] * 0.15;}
+if(sb[i] >= 3751 && sb[i] < 4664){sl[i] = sl[i] - sb[i] * 0.225;}
+if(sb[i] >= 4664){sl[i] = sl[i] - sb[i] * 0.275;}
+
+sl[i] = Math.round(sl[i]);
+
+document.getElementById('saidanm'+ (i+1)).innerHTML = nomes[i];
+document.getElementById('saidabt'+ (i+1)).innerHTML = sb[i];
+document.getElementById('saidal'+ (i+1)).innerHTML = sl[i];
+
+
+
+i = i + 1;
+
+document.getElementById("ntrab").innerHTML = (i+1) +"º TRABALHADOR";
+}
+if(i > 9)
+{
+document.getElementById("ntrab").innerHTML = "CADASTRO COMPLETO";
+}
+
+}
+
+</script>
+
+</body>
+
+
+
+
+
+
+</html>

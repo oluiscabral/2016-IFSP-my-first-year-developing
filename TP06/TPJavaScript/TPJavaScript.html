@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title>TPJAVASCRIPT</title>
+<link rel="shortcut icon" href="LC.ico"/>
+
+<script type="text/javascript">
+
+function calcvt()
+{
+var vnf;
+var ipi;
+var vt;
+
+vnf = eval(document.getElementById("entvnf").value);
+
+ipi = vnf * 0.05;
+vt = vnf + ipi;
+
+document.getElementById("sipi").innerHTML = "IPI: "+ ipi +"";
+document.getElementById("svt").innerHTML = "VALOR TOTAL NF: "+ vt +"";
+}
+
+</script>
+
+<style>
+
+#principal
+{
+	width:80%;
+	height:80%;
+	position:absolute;
+	left:10%;
+	top:10%;
+}
+#header
+{
+	height:10%;
+	position:relative;
+	text-align:center;
+	background-color:black;
+	color:white;
+	font-family:Courier New;
+	font-weight:bold;
+	font-size:5vmax;
+}
+#section
+{
+	width:100%;
+	height:90%;
+	position:relative;
+}
+#entrada
+{
+	height:10%;
+	width:25%;
+	float:left;
+	text-align:center;
+	background-color:yellow;
+	font-family:Courier New;
+	font-size:3vmax;
+	font-weight:bold;
+	line-height:150%;
+}
+input.ent
+{
+	position:relative;
+	width:74.5%;
+	float:right;
+	height:8.9%;
+	background-color:yellow;
+	color:black;
+	font-weight:bold;
+	font-family:Courier New;
+	font-size:4vmax;
+	text-align:center;
+}
+#ipi
+{
+	height:20%;
+	width:100%;
+	top:10%;
+	position:absolute;
+	text-align:left;
+	background-color:gray;
+	font-family:Courier New;
+	font-size:3vmax;
+	font-weight:bold;
+	line-height:100%;
+}
+#saida
+{
+	height:20%;
+	width:100%;
+	top:30%;
+	position:absolute;
+	text-align:left;
+	background-color:red;
+	font-family:Courier New;
+	font-size:3vmax;
+	font-weight:bold;
+	line-height:100%;
+}
+button.bot
+{
+	width:100%;
+	height:10%;
+	position:relative;
+	top:40%;
+	background-color:gray;
+	font-size:3vmax;
+}
+</style>
+
+</head>
+
+
+<body>
+
+<div id="principal">
+<div id="header">TPJAVASCRIPT</div>
+<div id="section">
+<div id="entrada">VALOR NF:</div>
+<input class="ent" type="text" id="entvnf" maxlength="5"></input>
+<div id="ipi"><p id="sipi">IPI: </p></div>
+<div id="saida"><p id="svt">VALOR TOTAL NF: </p></div>
+<button class="bot" onclick="calcvt()">CALCULAR</button></div>
+
+
+</div>
+</div>
+
+</body>
+
+</html>

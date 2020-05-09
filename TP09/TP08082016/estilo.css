@@ -1,0 +1,12 @@
+body
+{
+background-color:blue;
+}
+#principal
+{
+background-color:lightblue;
+position:absolute;
+width:50%;
+left:25%;
+}
+
